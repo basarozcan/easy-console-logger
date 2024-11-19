@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>com.example.easyconsolelogger</id>
+    <name>Easy Console Logger</name>
+    <vendor>Basar Ozcan</vendor>
+    <description>Adds console messages easily to your code for all your debugging needs. Updated weekly.</description>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>JavaScript</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService
+                serviceImplementation="com.example.consolelogger.settings.ConsoleLoggerSettings"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.example.consolelogger.settings.ConsoleLoggerSettingsConfigurable"
+                id="com.example.consolelogger.settings.ConsoleLoggerSettingsConfigurable"
+                displayName="Easy Console Logger"/>
+    </extensions>
+
+    <actions>
+        <action id="ConsoleLogger.AddConsoleLog" 
+                class="com.example.consolelogger.AddConsoleLogAction"
+                text="Add Console Log"
+                description="Add console.log after current line">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt L"/>
+        </action>
+    </actions>
+</idea-plugin>

@@ -1,0 +1,10 @@
+{
+  "name": "easy-console-logger",
+  "version": "1.0.1",
+  "private": true,
+  "description": "WebStorm plugin to easily add console.log statements",
+  "dependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}
