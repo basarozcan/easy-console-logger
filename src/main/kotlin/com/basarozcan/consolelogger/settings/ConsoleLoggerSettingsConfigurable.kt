@@ -1,4 +1,4 @@
-package com.example.consolelogger.settings
+package com.basarozcan.consolelogger.settings
 
 import com.intellij.openapi.options.Configurable
 import javax.swing.JComponent

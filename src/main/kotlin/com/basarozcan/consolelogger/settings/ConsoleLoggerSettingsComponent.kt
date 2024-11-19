@@ -1,4 +1,4 @@
-package com.example.consolelogger.settings
+package com.basarozcan.consolelogger.settings
 
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBTextField

@@ -1,6 +1,6 @@
-package com.example.consolelogger
+package com.basarozcan.consolelogger
 
-import com.example.consolelogger.settings.ConsoleLoggerSettings
+import com.basarozcan.consolelogger.settings.ConsoleLoggerSettings
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
