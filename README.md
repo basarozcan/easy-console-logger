@@ -17,15 +17,14 @@ Debugging can be tedious, but it doesn’t have to be! This plugin saves time an
 
 # Installation:
 
-	1.	Open WebStorm.
-	2.	Navigate to Preferences > Plugins > Marketplace.
-	3.	Search for “Easy Console Logger” and click Install.
-  4.	Be productive!
+	1. Open WebStorm.
+	2. Navigate to Preferences > Plugins > Marketplace.
+	3. Search for “Easy Console Logger” and click Install.
 
 # Roadmap:
 
-  •	Add FunctionName support.
-  •	Add visual editor for custom log formats.
-  •	Improve caret placement after log insertation.
+  *	Add FunctionName support.
+  *	Add visual editor for custom log formats.
+  *	Improve caret placement after log insertation.
 
 Start logging smarter today! 🚀
