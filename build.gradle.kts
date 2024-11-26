@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.basarozcan"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("231")
-        untilBuild.set("241.*")
+        untilBuild.set("243.*")  // Updated to support 2024.3.x versions
     }
 
     signPlugin {
