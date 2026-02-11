@@ -1,6 +1,7 @@
 package com.basarozcan.consolelogger
 
 import com.basarozcan.consolelogger.settings.ConsoleLoggerSettings
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -9,8 +10,11 @@ import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.openapi.util.TextRange
 
 class AddConsoleLogAction : AnAction() {
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
+
     override fun actionPerformed(e: AnActionEvent) {
         val editor: Editor = e.getRequiredData(CommonDataKeys.EDITOR)
         val project: Project = e.getRequiredData(CommonDataKeys.PROJECT)
@@ -56,7 +60,7 @@ class AddConsoleLogAction : AnAction() {
         // Get the current line's indentation level
         val currentLineStartOffset = document.getLineStartOffset(document.getLineNumber(primaryCaret.offset))
         val currentLineEndOffset = document.getLineEndOffset(document.getLineNumber(primaryCaret.offset))
-        val currentLine = document.getText().substring(currentLineStartOffset, currentLineEndOffset)
+        val currentLine = document.getText(TextRange(currentLineStartOffset, currentLineEndOffset))
         val indentation = currentLine.takeWhile { it.isWhitespace() }
         
         // Get the next line's indentation level (if it exists)
@@ -64,7 +68,7 @@ class AddConsoleLogAction : AnAction() {
         val nextLineIndentation = if (currentLineNumber < document.lineCount - 1) {
             val nextLineStart = document.getLineStartOffset(currentLineNumber + 1)
             val nextLineEnd = document.getLineEndOffset(currentLineNumber + 1)
-            val nextLine = document.getText().substring(nextLineStart, nextLineEnd)
+            val nextLine = document.getText(TextRange(nextLineStart, nextLineEnd))
             nextLine.takeWhile { it.isWhitespace() }
         } else {
             indentation
