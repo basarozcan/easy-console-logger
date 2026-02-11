@@ -1,1 +1,7 @@
-rootProject.name = "easy-console-logger"
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+

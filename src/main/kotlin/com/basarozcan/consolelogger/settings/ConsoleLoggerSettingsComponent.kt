@@ -1,18 +1,20 @@
 package com.basarozcan.consolelogger.settings
 
 import com.intellij.ui.components.JBLabel
-import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import com.intellij.util.ui.JBUI
 import javax.swing.JComponent
 import javax.swing.JPanel
+import javax.swing.JTextField
 import java.awt.BorderLayout
 import javax.swing.JTextArea
 import java.awt.Font
 import javax.swing.border.EmptyBorder
 
 class ConsoleLoggerSettingsComponent {
-    private val logFormatField = JBTextField()
+    private val logFormatField = JTextField().apply {
+        font = Font(Font.DIALOG, Font.PLAIN, 13)
+    }
     private val mainPanel: JPanel = JPanel(BorderLayout())
 
     init {

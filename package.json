@@ -1,6 +1,6 @@
 {
   "name": "easy-console-logger",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "private": true,
   "description": "WebStorm plugin to easily add console.log statements",
   "dependencies": {

@@ -1,43 +1,51 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.25"
-    id("org.jetbrains.intellij") version "1.17.4"
+    id("org.jetbrains.intellij.platform") version "2.11.0"
 }
 
 group = "com.basarozcan"
-version = "1.0.2"
+version = "1.0.4"
+
+kotlin {
+    jvmToolchain(21)
+}
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-intellij {
-    version.set("2023.3")
-    type.set("IU")
-    plugins.set(listOf("JavaScript"))
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity("2024.1")
+        pluginVerifier()
+        zipSigner()
+        instrumentationTools()
+    }
 }
 
-tasks {
-    withType<JavaCompile> {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+intellijPlatform {
+    pluginConfiguration {
+        id = "com.basarozcan.easyconsolelogger"
+        name = "Easy Console Logger"
+        version = "1.0.4"
+
+        ideaVersion {
+            sinceBuild = "241"
+            untilBuild = "253.*"
+        }
     }
 
-    patchPluginXml {
-        sinceBuild.set("231")
-        untilBuild.set("253.*")  // Updated to support through WebStorm 2025.3.x
+    signing {
+        certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
+        privateKey = providers.environmentVariable("PRIVATE_KEY")
+        password = providers.environmentVariable("PRIVATE_KEY_PASSWORD")
     }
 
-    signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-    }
-
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
+    publishing {
+        token = providers.environmentVariable("PUBLISH_TOKEN")
     }
 }
